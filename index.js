@@ -33,7 +33,6 @@ app.use(function (req, res, next) {
     next();
 });
 
-console.log("maina")
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(passport.initialize())
