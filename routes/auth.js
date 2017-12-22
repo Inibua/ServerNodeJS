@@ -2,6 +2,7 @@ const express = require('express')
 const passport = require('passport')
 const validator = require('validator')
 const userController = require('../controllers/user')
+const cors = require('cors');    
 
 const router = new express.Router()
 
@@ -52,6 +53,7 @@ function validateLoginForm (payload) {
   }
 }
 
+router.options('/signup', cors());
 router.post('/signup', (req, res, next) => {
   const validationResult = validateSignupForm(req.body)
   if (!validationResult.success) {
@@ -76,7 +78,7 @@ router.post('/signup', (req, res, next) => {
     })
   })(req, res, next)
 })
-
+router.options('/login', cors());
 router.post('/login', (req, res, next) => {
   const validationResult = validateLoginForm(req.body)
   if (!validationResult.success) {

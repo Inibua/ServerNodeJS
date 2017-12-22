@@ -14,10 +14,11 @@ const port = 5000
 
 const envConfig = require('./config/environment')
 require('./config/database')(envConfig)
+app.use(cors());
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://roomy-hook.surge.sh');
+    res.header('Access-Control-Allow-Origin', '*');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
